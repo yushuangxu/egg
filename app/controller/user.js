@@ -24,7 +24,7 @@ class UserController extends Controller {
 			}, app.config.jwt.secret)
 			ctx.body = {code:200 , msg:'登陆成功', token}
 		} else {
-			ctx.body = '该用户名不存在'
+			ctx.body = {code:401,msg:'用户名或者密码错误!'}
 		}
 
 	}

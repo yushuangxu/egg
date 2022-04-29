@@ -17,10 +17,9 @@ class userService extends Service {
 		const { app } = this
 	
 		try {
-			const result = await await app.mysql.select('member', {
-				where: { account, password }
+			const result = await await app.mysql.get('member', {
+				account, password
 			})
-			console.log(result)
 			return result
 		} catch (error) {
 			return null
