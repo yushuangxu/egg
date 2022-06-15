@@ -8,4 +8,6 @@ module.exports = app => {
 	require('./router/home')(app)
 	require('./router/user')(app)
 	require('./router/article')(app)
+	require('./router/upload')(app)
+	require('./router/tag')(app)
 };
