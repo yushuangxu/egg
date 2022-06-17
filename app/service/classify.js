@@ -24,9 +24,9 @@ class ClassifyService extends Service {
                 return 200
             }
         } catch (error) {
-
             return null
         }
     }
+    
 }
 module.exports = ClassifyService

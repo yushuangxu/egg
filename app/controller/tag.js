@@ -43,6 +43,23 @@ class TagController extends Controller {
 			}
 		}
 	}
+	async delete() {
+		const { ctx } = this
+		const { id } = ctx.request.body
+		console.log(id)
+		const result = await ctx.service.tag.delete(id)
+		if (result) {
+			ctx.body = {
+				status: 200,
+				msg: '删除成功'
+			}
+		} else {
+			ctx.body = {
+				status: 500,
+				errMsg: '删除失败'
+			}
+		}
+	}
 }
 
 module.exports = TagController;

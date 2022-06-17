@@ -27,5 +27,15 @@ class TagService extends Service {
             return null
         }
     }
+    async delete(id) {
+        const { app } = this
+        try {
+            const result = await app.mysql.delete('tag', { id })
+            return result
+        } catch (error) {
+            console.log(error)
+            return null
+        }
+    }
 }
 module.exports = TagService
