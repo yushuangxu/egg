@@ -10,5 +10,16 @@ class ArticleService extends Service {
             return null
         }
     }
+    async add(params) {
+        const { app } = this
+        console.log(params)
+        try {
+            await app.mysql.insert('article', params)
+            return 200
+
+        } catch (error) {
+            return null
+        }
+    }
 }
 module.exports = ArticleService
