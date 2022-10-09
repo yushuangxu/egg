@@ -1,25 +1,36 @@
 const Service = require('egg').Service;
 class ArticleService extends Service {
     async list() {
-        const { app } = this
+        const { app } = this;
         try {
-            const result = await app.mysql.select('article')
-            return result
+            const result = await app.mysql.select('article');
+            return result;
         } catch (error) {
-            console.log(error)
-            return null
+            console.log(error);
+            return null;
         }
     }
     async add(params) {
-        const { app } = this
-        console.log(params)
+        const { app } = this;
+        console.log(params);
         try {
-            await app.mysql.insert('article', params)
-            return 200
+            await app.mysql.insert('article', params);
+            return 200;
 
         } catch (error) {
-            return null
+            return null;
+        }
+    }
+    async delete(id) {
+        const { app } = this;
+        try {
+
+            const result = await app.mysql.delete('article', { id });
+            return result;
+        } catch (error) {
+            console.log(error);
+            return null;
         }
     }
 }
-module.exports = ArticleService
+module.exports = ArticleService;
