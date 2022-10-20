@@ -32,5 +32,21 @@ class ArticleService extends Service {
             return null;
         }
     }
+    async info(id) {
+        const { app } = this;
+        if (!id) {
+            console.log('id不能为空');
+            return null;
+        }
+        try {
+            const result = await app.mysql.select('article', {
+                where: { id }
+            });
+            return result;
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
 }
 module.exports = ArticleService;

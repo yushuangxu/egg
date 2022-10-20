@@ -36,6 +36,23 @@ class ArticleController extends Controller {
             };
         }
     }
+    async info() {
+        const { ctx } = this;
+        const { id } = ctx.request.body;
+        const result = await ctx.service.article.info(id);
+
+        if (result) {
+            ctx.body = {
+                code: 200,
+                data: result[0]
+            };
+        } else {
+            ctx.body = {
+                code: 500,
+                errMsg: '获取失败'
+            };
+        }
+    }
     async delete() {
         const { ctx } = this;
         const { id } = ctx.request.body;
