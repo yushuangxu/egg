@@ -1,10 +1,19 @@
 const Service = require('egg').Service;
 class ArticleService extends Service {
-    async list() {
+    async list(params) {
         const { app } = this;
         try {
-            const result = await app.mysql.select('article');
-            return result;
+            const result = await app.mysql.select('article', {
+                offset: parseInt(params.page - 1) * parseInt(params.pageSize),
+                limit: parseInt(params.pageSize),
+
+            });
+            const count = await app.mysql.query('select count(id) as count from article');
+
+            return {
+                list: result,
+                count: count[0].count
+            };
         } catch (error) {
             console.log(error);
             return null;
@@ -12,7 +21,7 @@ class ArticleService extends Service {
     }
     async add(params) {
         const { app } = this;
-        console.log(params);
+
         try {
             await app.mysql.insert('article', params);
             return 200;
