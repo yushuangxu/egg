@@ -34,8 +34,10 @@ module.exports = appInfo => {
 	config.keys = appInfo.name + '_1646895693217_463';
 	config.security = {
 		csrf: {
-			enable: true,
+			enable: false,
+			ignoreJSON: true
 		},
+		domainWhiteList: ['http://flog.frost.pub', 'http://localhost:3000']
 	};
 
 
@@ -44,7 +46,8 @@ module.exports = appInfo => {
 	};
 	// 跨域配置
 	config.cors = {
-		origin: 'http://viewer.frost.pub',
+		credentials: true,
+		origin: 'http://flog.frost.pub',
 		allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
 
 	};
