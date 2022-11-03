@@ -34,16 +34,19 @@ module.exports = appInfo => {
 	config.keys = appInfo.name + '_1646895693217_463';
 	config.security = {
 		csrf: {
-			enable: false,
-		}
-	}
+			enable: true,
+		},
+	};
+
+
 	config.jwt = {
 		secret: '123456'
-	}
+	};
 	// 跨域配置
 	config.cors = {
-		origin: '*',
+		origin: 'http://viewer.frost.pub',
 		allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+
 	};
 	// add your middleware config here
 	config.middleware = [];
@@ -54,7 +57,7 @@ module.exports = appInfo => {
 	};
 	config.multipart = {
 		mode: 'file',
-	  };
+	};
 	return {
 		...config,
 		...userConfig,
