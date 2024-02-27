@@ -6,7 +6,7 @@ class ArticleService extends Service {
             const result = await app.mysql.select('article', {
                 offset: parseInt(params.page - 1) * parseInt(params.pageSize),
                 limit: parseInt(params.pageSize),
-
+                orders:[['id','DESC']]
             });
             const count = await app.mysql.query('select count(id) as count from article');
 
@@ -35,6 +35,16 @@ class ArticleService extends Service {
         try {
 
             const result = await app.mysql.delete('article', { id });
+            return result;
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
+    async update(params) {
+        const { app } = this;
+        try {
+            const result = await app.mysql.update('article', params);
             return result;
         } catch (error) {
             console.log(error);

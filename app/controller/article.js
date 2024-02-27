@@ -23,6 +23,7 @@ class ArticleController extends Controller {
         const params = {
             ...ctx.request.body
         };
+        console.log(ctx)
         const result = await ctx.service.article.add(params);
         if (result == 200) {
             ctx.body = {
@@ -52,6 +53,24 @@ class ArticleController extends Controller {
             ctx.body = {
                 code: 500,
                 errMsg: '获取失败'
+            };
+        }
+    }
+    async update() {
+        const { ctx } = this;
+        const params = {
+            ...ctx.request.body
+        };
+        const result = await ctx.service.article.update(params);
+        if (result) {
+            ctx.body = {
+                code: 200,
+                data: result
+            };
+        } else {
+            ctx.body = {
+                code: 500,
+                errMsg: '编辑失败'
             };
         }
     }

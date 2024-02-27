@@ -16,7 +16,7 @@ module.exports = appInfo => {
 		// 单数据库信息配置
 		client: {
 			// host
-			host: '106.52.176.150',
+			host: '175.178.251.199',
 			// 端口号
 			port: '3306',
 			// 用户名
@@ -37,7 +37,7 @@ module.exports = appInfo => {
 			enable: false,
 			ignoreJSON: true
 		},
-		domainWhiteList: ['http://flog.frost.pub', 'http://localhost:3000']
+		domainWhiteList: ['http://flog.frost.pub', 'http://localhost:3000','http://localhost:3002']
 	};
 
 
@@ -47,7 +47,7 @@ module.exports = appInfo => {
 	// 跨域配置
 	config.cors = {
 		credentials: true,
-		origin: 'http://flog.frost.pub',
+		origin: 'http://127.0.0.1:8082',
 		allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
 
 	};

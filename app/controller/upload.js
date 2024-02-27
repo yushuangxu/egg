@@ -11,11 +11,11 @@ class UploadController extends Controller {
         const file = ctx.request.files[0]
         const toFileName = '/public/upload/' + Date.now() + file.filename
         const to = path.dirname(__dirname) + toFileName
-
+        console.log()
         await fs.copyFileSync(file.filepath, to)
         //返回前端路径
         const newUrl = 'http://127.0.0.1:7001' + toFileName
-
+     
         ctx.body = {
             msg: '图片上传成功',
             url: newUrl,
