@@ -11,4 +11,5 @@ module.exports = app => {
 	require('./router/upload')(app);
 	require('./router/tag')(app);
 	require('./router/classify')(app);
+	require('./router/extract')(app);
 };
